@@ -1,48 +1,164 @@
 @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
 * {
+    box-sizing: border-box;
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: Acme, sans-serif;
 }
 
-.navigation {
-    background-color: #333;
-    display: flex;
-    justify-content: space-around;
-    padding: 10px;
+#header, #main, #footer {
+    padding: 0 50px;
 }
 
-.nav-btn {
-    color: #fff;
-    background-color: #444;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-}
-
-.content {
-    padding: 20px;
-}
-
-.content h1 {
-    color: #333;
-}
-
-.content p {
-    color: #666;
-}
-
-
-#brandName {
+/* Classes Styles that belong to header Tag */
+.brandName {
     font-family: 'Acme', sans-serif;
     color: #E60023;
 }
 
-#brandNameSpan {
+.brandNameSpan {
     color: #1EA8DD;
+}
+
+.menu {
+
+}
+
+.menu-item {
+
+}
+
+.user-icon {
+
+}
+
+.cart-icon {
+
+}
+
+.burger-icon {
+
+}
+
+/* Classes Styles that belong to main Tag */
+.shop-info-container {
+
+}
+
+.info {
+
+}
+
+.stars {
+
+}
+
+.call-to-action-container {
+
+}
+
+.call-to-action {
+
+}
+
+.title {
+
+}
+
+.subtitle {
+
+}
+
+.popular-brands-container {
+
+}
+
+.popular-brands {
+
+}
+
+.brand {
+
+}
+
+.shop-by-category-container {
+
+}
+
+.shop-card {
+
+}
+
+.shop-card-image {
+
+}
+
+.shop-card-body {
+
+}
+
+.shop-card-title {
+
+}
+
+.shop-card-description {
+
+}
+
+/* Classes Styles that belong to footer Tag */
+.most-popular-container {
+
+}
+
+.most-popular-header {
+
+}
+
+.most-popular-slider {
+
+}
+
+.left-arrow-slider {
+
+}
+
+.right-arrow-slider {
+
+}
+
+.most-popular-cards {
+
+}
+
+.popular-card {
+
+}
+
+.popular-card-image {
+
+}
+
+.popular-card-body  {
+
+}
+
+.popular-card-text {
+
+}
+
+.popular-card-title {
+
+}
+
+.popular-card-description {
+
+}
+
+/* General Styles */
+.button {
+
 }
