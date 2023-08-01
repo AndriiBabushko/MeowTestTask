@@ -1,1 +1,1 @@
-"# MeowTestTask" 
+# MeowTestTask
