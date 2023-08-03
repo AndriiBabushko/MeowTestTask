@@ -10,33 +10,36 @@
 <body>
 <header id="header">
     <nav class="navigation">
-        <div class="burger-icon">
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <line x1="3.5" y1="3.5" x2="18.5" y2="3.5" stroke="#383838" stroke-linecap="round"/>
-                <line x1="3.5" y1="10.5" x2="18.5" y2="10.5" stroke="#383838" stroke-linecap="round"/>
-                <line x1="3.5" y1="17.5" x2="18.5" y2="17.5" stroke="#383838" stroke-linecap="round"/>
-            </svg>
+        <div class="start-navigation">
+            <div class="burger-icon">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="3.5" y1="3.5" x2="18.5" y2="3.5" stroke="#383838" stroke-linecap="round"/>
+                    <line x1="3.5" y1="10.5" x2="18.5" y2="10.5" stroke="#383838" stroke-linecap="round"/>
+                    <line x1="3.5" y1="17.5" x2="18.5" y2="17.5" stroke="#383838" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <p class="brandName">M<span class="brandNameSpan">EO</span>W</p>
         </div>
 
-        <p class="brandName">M<span class="brandNameSpan">EO</span>W</p>
-
-        <ul class="menu">
-            <li class="menu-item">
-                <p class="menu-item-text">DOGS</p>
-                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 3L5 7L9 3" stroke="#383838" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </li>
-            <li class="menu-item">
-                <p class="menu-item-text">CATS</p>
-                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 3L5 7L9 3" stroke="#383838" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </li>
-            <li class="menu-item">GROOMING</li>
-            <li class="menu-item">SALE</li>
-            <li class="menu-item">BLOG</li>
-        </ul>
+        <div class="menu-container">
+            <ul class="menu">
+                <li class="menu-item">
+                    <p class="menu-item-text">DOGS</p>
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 3L5 7L9 3" stroke="#383838" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </li>
+                <li class="menu-item">
+                    <p class="menu-item-text">CATS</p>
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 3L5 7L9 3" stroke="#383838" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </li>
+                <li class="menu-item">GROOMING</li>
+                <li class="menu-item">SALE</li>
+                <li class="menu-item">BLOG</li>
+            </ul>
+        </div>
 
         <div class="navigation-icons">
             <div class="user-icon">
@@ -53,6 +56,36 @@
             </div>
         </div>
     </nav>
+
+    <div class="sidebar">
+        <div class="menu-head">
+            <div class="close-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L19 19M19 1L1 19" stroke="black" stroke-width="2"/>
+                </svg>
+            </div>
+        </div>
+        <div class="menu-container">
+            <p class="brandName">M<span class="brandNameSpan">EO</span>W</p>
+            <ul class="menu">
+                <li class="menu-item">
+                    <p class="menu-item-text">DOGS</p>
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 3L5 7L9 3" stroke="#383838" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </li>
+                <li class="menu-item">
+                    <p class="menu-item-text">CATS</p>
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 3L5 7L9 3" stroke="#383838" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </li>
+                <li class="menu-item">GROOMING</li>
+                <li class="menu-item">SALE</li>
+                <li class="menu-item">BLOG</li>
+            </ul>
+        </div>
+    </div>
 </header>
 
 <main id="main">
@@ -83,19 +116,29 @@
     <div class="popular-brands-container">
         <div class="popular-brands-slider">
             <div class="popular-brand-slide">
-                <img src="assets/brands/BuzzFeed.png" alt="BuzzFeed" class="brand" />
+                <div class="slide-content">
+                    <img src="assets/brands/BuzzFeed.png" alt="BuzzFeed" class="brand"/>
+                </div>
             </div>
             <div class="popular-brand-slide">
-                <img src="assets/brands/USAToday.png" alt="USAToday" class="brand" />
+                <div class="slide-content">
+                    <img src="assets/brands/USAToday.png" alt="USAToday" class="brand"/>
+                </div>
             </div>
             <div class="popular-brand-slide">
-                <img src="assets/brands/NBC.png" alt="NBC" class="brand" />
+                <div class="slide-content">
+                    <img src="assets/brands/NBC.png" alt="NBC" class="brand"/>
+                </div>
             </div>
             <div class="popular-brand-slide">
-                <img src="assets/brands/FOX.png" alt="FOX" class="brand" />
+                <div class="slide-content">
+                    <img src="assets/brands/FOX.png" alt="FOX" class="brand"/>
+                </div>
             </div>
             <div class="popular-brand-slide">
-                <img src="assets/brands/CBS.png" alt="CBS" class="brand" />
+                <div class="slide-content">
+                    <img src="assets/brands/CBS.png" alt="CBS" class="brand"/>
+                </div>
             </div>
         </div>
         <div class="slider-indicators"></div>
@@ -177,11 +220,13 @@
                 <div class="popular-card-body">
                     <div class="popular-card-head">
                         <p class="popular-card-title">Bird Teaser Wand</p>
-                        <button class="button">Show Now</button>
+                        <p class="popular-card-description">
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        </p>
                     </div>
-                    <p class="popular-card-description">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    </p>
+                    <div class="button-container">
+                        <button class="button">Shop Now</button>
+                    </div>
                 </div>
             </div>
             <div class="popular-card">
@@ -189,11 +234,13 @@
                 <div class="popular-card-body">
                     <div class="popular-card-head">
                         <p class="popular-card-title">Naughty Mouse</p>
-                        <button class="button">Show Now</button>
+                        <p class="popular-card-description">
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        </p>
                     </div>
-                    <p class="popular-card-description">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    </p>
+                    <div class="button-container">
+                        <button class="button">Shop Now</button>
+                    </div>
                 </div>
             </div>
             <div class="popular-card">
@@ -201,11 +248,13 @@
                 <div class="popular-card-body">
                     <div class="popular-card-head">
                         <p class="popular-card-title">Bird Teaser Wand</p>
-                        <button class="button">Show Now</button>
+                        <p class="popular-card-description">
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        </p>
                     </div>
-                    <p class="popular-card-description">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    </p>
+                    <div class="button-container">
+                        <button class="button">Shop Now</button>
+                    </div>
                 </div>
             </div>
         </div>

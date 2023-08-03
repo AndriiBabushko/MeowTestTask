@@ -5,7 +5,8 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    --x-padding: 50px;
+    --x-padding-large: 50px;
+    --x-padding-small: 25px;
 }
 
 body {
@@ -14,7 +15,7 @@ body {
 
 /* Classes Styles that belong to header Tag */
 .navigation {
-    padding: 0 var(--x-padding);
+    padding: 0 var(--x-padding-large);
     width: 100%;
     height: 92px;
     display: flex;
@@ -23,7 +24,56 @@ body {
     text-transform: uppercase;
 }
 
+.sidebar.open .menu-container {
+    flex-direction: column;
+    max-height: 100%;
+}
+
+.sidebar.open .menu {
+    padding: var(--x-padding-small);
+    width: 100%;
+    grid-template-columns: repeat(1, 1fr);
+    grid-column-gap: 0;
+    grid-row-gap: 30px;
+}
+
+.sidebar.open .menu-item {
+    justify-content: center;
+    font-size: 24px;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #FFFFFF;
+    z-index: 1000;
+    transition: left 0.3s ease;
+}
+
+.sidebar.open {
+    left: 0;
+}
+
+.menu-head {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.close-icon {
+    cursor: pointer;
+    margin: 15px;
+}
+
+.start-navigation {
+    display: flex;
+}
+
 .brandName {
+    display: flex;
+    align-items: center;
     font-family: 'Acme', sans-serif;
     font-weight: 400;
     color: #E60023;
@@ -32,6 +82,11 @@ body {
 
 .brandNameSpan {
     color: #1EA8DD;
+}
+
+.menu-container {
+    display: flex;
+    align-items: center;
 }
 
 .menu {
@@ -70,8 +125,6 @@ body {
 .burger-icon {
     display: none;
     margin-right: 25px;
-    width: 22px;
-    height: 22px;
 }
 
 /* Classes Styles that belong to main Tag */
@@ -131,7 +184,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: start;
-    padding: 0 var(--x-padding);
+    padding: 0 var(--x-padding-large);
     color: #FFFFFF;
 }
 
@@ -158,36 +211,43 @@ body {
 .popular-brands-container {
     width: 100%;
     background-color: #f5f5f5;
-    padding: 55px var(--x-padding);
+    padding: 55px var(--x-padding-large);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    position: relative;
+    height: 190px;
 }
 
 .popular-brands-slider {
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    overflow-x: hidden;
-    position: relative;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    transition: transform 300ms ease-in-out;
+    width: 100%;
 }
 
 .popular-brand-slide {
-    flex: 0 0 100%;
-    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide-content {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 .brand {
     max-height: 80px;
     max-width: 270px;
-    margin-right: 10px;
+    margin: 0 auto;
 }
 
 .slider-indicators {
-    display: flex;
+    display: none;
     justify-content: center;
     margin-top: 10px;
 }
@@ -205,9 +265,10 @@ body {
     background-color: black;
 }
 
+
 /* Classes Styles that belong to footer Tag */
 .shop-by-category-container {
-    padding: 125px var(--x-padding);
+    padding: 125px var(--x-padding-large);
 }
 
 .shop-by-category-title, .most-popular-title {
@@ -222,12 +283,14 @@ body {
 }
 
 .shop-cards {
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
 }
 
 .shop-card {
+    width: 100%;
     display: flex;
     border-radius: 15px;
     background-color: #F5F5F5;
@@ -266,14 +329,14 @@ body {
 }
 
 .most-popular-container {
-    padding-left: var(--x-padding);
+    padding-left: var(--x-padding-large);
     padding-bottom: 60px;
     overflow: hidden;
     width: 100%;
 }
 
 .most-popular-header {
-    padding-right: var(--x-padding);
+    padding-right: var(--x-padding-large);
     display: flex;
     justify-content: space-between;
 }
@@ -298,9 +361,7 @@ body {
     justify-content: center;
     align-items: center;
     opacity: 100%;
-    transition: opacity;
-    transition-duration: 300ms;
-    transition-timing-function: ease-in-out;
+    transition: opacity 300ms ease-in-out;
 }
 
 .left-arrow-button:hover, .right-arrow-button:hover {
@@ -312,13 +373,14 @@ body {
     transition: transform 300ms ease-in-out;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    width: 100%
+    width: 100%;
+    margin-bottom: 25px;
 }
 
 .popular-card {
     width: 550px;
     max-height: 700px;
-    margin-right: 20px;
+    margin-right: 25px;
     flex-shrink: 0;
 }
 
@@ -330,12 +392,15 @@ body {
 .popular-card-body {
     margin-top: 20px;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
 .popular-card-head {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    width: 52%;
 }
 
 .popular-card-title {
@@ -345,6 +410,7 @@ body {
     line-height: 38px;
     text-align: left;
     color: #383838;
+    margin-bottom: 20px;
 }
 
 .popular-card-description {
@@ -355,7 +421,6 @@ body {
     letter-spacing: 0.02em;
     text-align: left;
     color: #383838;
-    width: 52%;
 }
 
 /* General Styles */
@@ -372,9 +437,7 @@ body {
     font-family: "Karla", sans-serif;
     text-align: center;
     text-transform: uppercase;
-    transition: background-color;
-    transition-duration: 300ms;
-    transition-timing-function: ease-in-out;
+    transition: background-color 300ms ease-in-out;
 }
 
 .button:hover {
@@ -382,29 +445,218 @@ body {
 }
 
 /* Media Requests */
-@media (min-width: 375px) and (max-width: 576px){
-    .popular-brands-slider {
-        display: flex;
+@media (min-width: 375px) and (max-width: 576px) {
+    .navigation {
+        padding: 0 var(--x-padding-small);
+    }
+
+    .menu-container {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    .brandName {
+        font-size: 53px;
     }
 
     .burger-icon {
-        display: block;
+        display: flex;
     }
 
-    .menu {
+    .call-to-action {
+        padding: 0 var(--x-padding-small) 0;
+    }
+
+    .call-to-action-title {
+        font-size: 50px;
+        line-height: 63px;
+    }
+
+    .call-to-action-subtitle {
+        font-size: 18px;
+        line-height: 27px;
+    }
+
+    .popular-brands-container {
+        padding: 50px var(--x-padding-small);
+    }
+
+    .shop-by-category-container {
+        padding: 50px var(--x-padding-small);
+    }
+
+    .shop-by-category-title, .most-popular-title {
+        font-size: 35px;
+        margin-bottom: 25px;
+    }
+
+    .shop-info-container {
         display: none;
     }
-}
 
-@media (min-width: 576px) and (max-width: 768px){
-    .popular-brands-slider {
-        display: flex;
+    .shop-card {
+        flex-direction: column;
+        border-radius: 25px;
+    }
+
+    .shop-card .button {
+        padding: 15px 20px;
+    }
+
+    .shop-card-image {
+        width: 100%;
+        border-radius: 25px;
+        object-fit: cover;
+    }
+
+    .shop-card-title {
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
+
+    .shop-card-description {
+        display: none;
+    }
+
+    .most-popular-container {
+        padding: 0 var(--x-padding-small);
+    }
+
+    .most-popular-header {
+        padding-right: 0;
+    }
+
+    .popular-card {
+        width: 100%;
+        max-height: none;
+    }
+
+    .popular-card-body {
+        flex-direction: column;
+    }
+
+    .popular-card-head {
+        width: 100%;
+    }
+
+    .popular-card-title {
+        margin-bottom: 20px;
+    }
+
+    .popular-card-description {
+        margin-bottom: 20px;
+    }
+
+    .button {
+        font-size: 12px;
+    }
+
+    .button-container {
+        width: 100%;
+    }
+
+    .button-container > .button {
+        width: 100%;
+        padding: 15px 20px;
     }
 }
 
-@media (min-width: 768px) and (max-width: 991px){
-    .popular-brands-slider {
+@media (min-width: 576px) and (max-width: 767px) {
+    .navigation {
+        padding: 0 var(--x-padding-small);
+    }
+
+    .menu-container {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    .burger-icon {
         display: flex;
+    }
+
+    .call-to-action {
+        padding: 0 var(--x-padding-small) 0;
+    }
+
+    .popular-brands-container {
+        padding: 55px var(--x-padding-small);
+    }
+
+    .shop-by-category-container {
+        padding: 125px var(--x-padding-small);
+    }
+
+    .shop-info-container {
+        display: none;
+    }
+
+    .shop-card {
+        flex-direction: column;
+        border-radius: 25px;
+    }
+
+    .shop-card-image {
+        width: 100%;
+        border-radius: 25px;
+        object-fit: cover;
+    }
+
+    .shop-card-title {
+        margin-bottom: 15px;
+    }
+
+    .shop-card-description {
+        display: none;
+    }
+
+    .most-popular-container {
+        padding: 0 var(--x-padding-small);
+    }
+
+    .most-popular-header {
+        padding-right: 0;
+    }
+
+    .popular-card {
+        width: 100%;
+        max-height: none;
+    }
+
+    .popular-card-body {
+        flex-direction: column;
+    }
+
+    .popular-card-head {
+        width: 100%;
+    }
+
+    .popular-card-title {
+        margin-bottom: 20px;
+    }
+
+    .popular-card-description {
+        margin-bottom: 20px;
+    }
+
+    .button {
+        padding: 15px 50px;
+    }
+
+    .button-container {
+        width: 100%;
+    }
+
+    .button-container > .button {
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    .shop-info-container {
+        display: none;
     }
 
     .shop-cards {
@@ -416,13 +668,32 @@ body {
     }
 
     .button {
-        margin: 10px 0;
         padding: 15px 50px;
     }
 }
 
-@media (min-width: 992px) and (max-width: 1200px){
-    .popular-brands {
+@media (max-width: 992px) {
+    .popular-brands-slider {
+        flex: 0 0 100%;
+    }
+
+    .popular-brand-slide {
+        min-width: 100%;
+        margin-right: 0;
+    }
+
+    .slider-indicators {
+        display: flex;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+    .popular-brands-container {
+        height: auto;
+    }
+
+    .popular-brands-slider {
+        flex-wrap: wrap;
         justify-content: center;
     }
 
@@ -430,16 +701,15 @@ body {
         margin: 10px;
     }
 
+    .slider-indicators {
+        display: none;
+    }
+
     .shop-cards {
         grid-template-columns: repeat(1, 1fr);
     }
 
     .shop-card {
         width: 100%;
-    }
-
-    .button {
-        margin: 10px 0;
-        padding: 15px 50px;
     }
 }

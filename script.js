@@ -1,4 +1,15 @@
 // Burger menu logic
+const burgerIcon = document.querySelector(".burger-icon");
+const sidebar = document.querySelector(".sidebar");
+const closeIcon = document.querySelector(".close-icon");
+
+burgerIcon.addEventListener("click", function () {
+    sidebar.classList.add("open");
+});
+
+closeIcon.addEventListener("click", function () {
+    sidebar.classList.remove("open");
+});
 
 
 // Popular slider logic
@@ -7,10 +18,10 @@ const popularSlideCount = popularSliderContainer.querySelectorAll('.popular-card
 let popularCurrentIndex = 0;
 
 const updateSliderPosition = () => {
-    const element = document.querySelector('.popular-card');
-    const styles = getComputedStyle(element);
+    const popularCard = document.querySelector('.popular-card');
+    const styles = getComputedStyle(popularCard);
     const margins = parseInt(styles.marginLeft) + parseInt(styles.marginRight);
-    const slideWidth = element.offsetWidth + margins;
+    const slideWidth = popularCard.offsetWidth + margins;
     const newPosition = -popularCurrentIndex * slideWidth;
     popularSliderContainer.style.transform = `translateX(${newPosition}px)`;
 }
@@ -25,90 +36,150 @@ const nextSlide = () => {
 }
 
 const prevSlide = () => {
-    if (popularCurrentIndex > 0) {
-        popularCurrentIndex--;
-    } else {
-        popularCurrentIndex = popularSlideCount - 1;
-    }
-    updateSliderPosition();
-}
+  if (popularCurrentIndex > 0) {
+    popularCurrentIndex--;
+  } else {
+    popularCurrentIndex = popularSlideCount - 1;
+  }
+  updateSliderPosition();
+};
 
-document.querySelector('.left-arrow-button').addEventListener('click', prevSlide);
-document.querySelector('.right-arrow-button').addEventListener('click', nextSlide);
-
+document
+  .querySelector(".left-arrow-button")
+  .addEventListener("click", prevSlide);
+document
+  .querySelector(".right-arrow-button")
+  .addEventListener("click", nextSlide);
 
 // Brands slider logic
-// Отримуємо елементи слайдера та індикаторів
-const slider = document.querySelector('.popular-brands-slider');
-const slides = document.querySelectorAll('.popular-brand-slide');
-const indicatorsContainer = document.querySelector('.slider-indicators');
+const brandsSlider = document.querySelector(".popular-brands-slider");
+const brandsSlides = document.querySelectorAll(".popular-brand-slide");
+const indicatorsContainer = document.querySelector(".slider-indicators");
+const indicators = [];
 
-slides.forEach((_, index) => {
-    const indicator = document.createElement('div');
-    indicator.classList.add('slider-indicator');
-    indicator.setAttribute('data-slide', index);
+let slideIndex = 0;
+let isDragging = false;
+let startPosition = 0;
+let currentTranslate = 0;
+let prevTranslate = 0;
+let animationID = 0;
+
+initializeSlides();
+
+const breakpoint = 992;
+const slideWidth = brandsSlides[0].offsetWidth;
+window.addEventListener("resize", () => {
+  const windowWidth = window.innerWidth;
+  if (windowWidth <= breakpoint) {
+    brandsSlider.style.width = `${slideWidth}px`;
+    brandsSlides.forEach((slide, index) => {
+      removeListeners(slide, index);
+      createListeners(slide, index);
+      setPositionByIndex();
+    });
+  } else {
+    brandsSlides.forEach((slide, index) => {
+      removeListeners(slide, index);
+    });
+    brandsSlider.style.width = "";
+  }
+});
+setPositionByIndex();
+
+function initializeSlides() {
+  brandsSlides.forEach((slide, index) => {
+    removeListeners(slide, index);
+    createListeners(slide, index);
+
+    const indicator = document.createElement("div");
+    indicator.classList.add("slider-indicator");
+    indicators.push(indicator);
     indicatorsContainer.appendChild(indicator);
-});
 
-const indicators = document.querySelectorAll('.slider-indicator');
-
-let currentIndex = 0;
-
-function showSlide(index) {
-    if (index < 0 || index >= slides.length) {
-        return;
-    }
-
-    slides.forEach((slide) => {
-        slide.style.transform = `translateX(-${index * 100}%)`;
+    indicator.addEventListener("click", () => {
+      slideIndex = index;
+      setPositionByIndex();
     });
-
-    const activeIndicator = document.querySelector('.slider-indicator.active');
-    if (activeIndicator) {
-        activeIndicator.classList.remove('active');
-    }
-    indicators[index].classList.add('active');
-
-    currentIndex = index;
+  });
 }
 
-function showNextSlide() {
-    const nextIndex = currentIndex + 1;
-    showSlide(nextIndex);
+function createListeners(slide, index) {
+  slide.addEventListener("touchstart", touchStart(index));
+  slide.addEventListener("touchend", touchEnd);
+  slide.addEventListener("touchmove", touchMove);
+
+  slide.addEventListener("dragstart", dragStartEvent);
 }
 
-function showPrevSlide() {
-    const prevIndex = currentIndex - 1;
-    showSlide(prevIndex);
+function removeListeners(slide, index) {
+  slide.removeEventListener("touchstart", touchStart(index));
+  slide.removeEventListener("touchend", touchEnd);
+  slide.removeEventListener("touchmove", touchMove);
 }
 
-indicators.forEach((indicator) => {
-    indicator.addEventListener('click', () => {
-        const slideIndex = parseInt(indicator.getAttribute('data-slide'));
-        showSlide(slideIndex);
-    });
-});
+function getPositionX(event) {
+  return event.type.includes("mouse") ? event.pageX : event.touches[0].clientX;
+}
 
-showSlide(currentIndex);
+function animation() {
+  setSliderPosition();
+  if (isDragging) requestAnimationFrame(animation);
+}
 
-// Встановлюємо обробники свайпів
-let touchStartX = 0;
-let touchEndX = 0;
+function setSliderPosition() {
+  brandsSlider.style.transform = `translateX(${currentTranslate}px)`;
+}
 
-slider.addEventListener('touchstart', (e) => {
-    touchStartX = e.touches[0].clientX;
-});
+function touchStart(index) {
+  return function (event) {
+    slideIndex = index;
+    startPosition = getPositionX(event);
+    isDragging = true;
 
-slider.addEventListener('touchend', (e) => {
-    touchEndX = e.changedTouches[0].clientX;
-    const deltaX = touchEndX - touchStartX;
+    animationID = requestAnimationFrame(animation);
+    brandsSlider.classList.add("grabbing");
+  };
+}
 
-    if (deltaX > 0) {
-        // Свайп вправо - показуємо попередній слайд
-        showPrevSlide();
-    } else if (deltaX < 0) {
-        // Свайп вліво - показуємо наступний слайд
-        showNextSlide();
-    }
-});
+function touchMove(event) {
+  if (isDragging) {
+    const currentPosition = getPositionX(event);
+    currentTranslate = prevTranslate + currentPosition - startPosition;
+  }
+}
 
+function touchEnd() {
+  cancelAnimationFrame(animationID);
+  isDragging = false;
+
+  const moveBy = currentTranslate - prevTranslate;
+
+  if (moveBy < -100 && slideIndex < brandsSlides.length - 1) {
+    slideIndex++;
+  }
+
+  if (moveBy > 100 && slideIndex > 0) {
+    slideIndex--;
+  }
+
+  setPositionByIndex();
+
+  brandsSlider.classList.remove("grabbing");
+}
+
+function dragStartEvent(e) {
+  e.preventDefault();
+}
+
+function setPositionByIndex() {
+  currentTranslate = slideIndex * -slideWidth;
+  prevTranslate = currentTranslate;
+  setSliderPosition();
+  updateIndicators();
+}
+
+function updateIndicators() {
+  indicators.forEach((indicator, index) => {
+    indicator.classList.toggle("active", index === slideIndex);
+  });
+}
