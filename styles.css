@@ -6,11 +6,15 @@
     padding: 0;
     margin: 0;
     --x-padding-large: 50px;
-    --x-padding-small: 25px;
+    --x-padding-small: 20px;
 }
 
 body {
     font-family: Acme, sans-serif;
+}
+
+a {
+    text-decoration: none;
 }
 
 /* Classes Styles that belong to header Tag */
@@ -90,8 +94,9 @@ body {
 }
 
 .menu {
+    font-family: Karla, sans-serif;
+    font-weight: 400;
     font-size: 16px;
-    color: black;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -104,6 +109,10 @@ body {
     display: flex;
     align-items: center;
     cursor: pointer;
+}
+
+.menu-item a {
+    color: black;
 }
 
 .menu-item-text {
@@ -164,7 +173,7 @@ body {
     height: 18px;
 }
 
-.call-to-action-container {
+.greeting-container {
     position: relative;
     width: 100%;
     height: 600px;
@@ -174,7 +183,7 @@ body {
     background-repeat: no-repeat;
 }
 
-.call-to-action {
+.greeting {
     position: absolute;
     top: 0;
     left: 0;
@@ -188,7 +197,7 @@ body {
     color: #FFFFFF;
 }
 
-.call-to-action-title {
+.greeting-title {
     font-family: 'Acme', sans-serif;
     font-weight: 400;
     font-size: 80px;
@@ -198,7 +207,7 @@ body {
     margin-bottom: 20px;
 }
 
-.call-to-action-subtitle {
+.greeting-subtitle {
     font-family: 'Karla', sans-serif;
     font-weight: 500;
     font-size: 20px;
@@ -319,7 +328,7 @@ body {
 }
 
 .shop-card-description {
-    font-family: "Karla", sans-serif;
+    font-family: Karla, sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
@@ -339,19 +348,18 @@ body {
     padding-right: var(--x-padding-large);
     display: flex;
     justify-content: space-between;
-}
-
-.most-popular-title {
     margin-bottom: 60px;
 }
 
 .most-popular-slider-buttons {
+    height: min-content;
     display: grid;
     grid-template-columns: repeat(2, auto);
     grid-column-gap: 20px;
 }
 
 .left-arrow-button, .right-arrow-button {
+    padding: 10px;
     background: #F5F5F5;
     border: none;
     border-radius: 100%;
@@ -362,6 +370,7 @@ body {
     align-items: center;
     opacity: 100%;
     transition: opacity 300ms ease-in-out;
+    cursor: pointer;
 }
 
 .left-arrow-button:hover, .right-arrow-button:hover {
@@ -424,7 +433,7 @@ body {
 }
 
 /* General Styles */
-.button {
+.button-link {
     padding: 15px 70px;
     border-radius: 28px;
     background-color: #E9292F;
@@ -440,12 +449,12 @@ body {
     transition: background-color 300ms ease-in-out;
 }
 
-.button:hover {
+.button-link:hover {
     background-color: #e3161d;
 }
 
 /* Media Requests */
-@media (min-width: 375px) and (max-width: 576px) {
+@media (min-width: 320px) and (max-width: 576px) {
     .navigation {
         padding: 0 var(--x-padding-small);
     }
@@ -464,18 +473,22 @@ body {
         display: flex;
     }
 
-    .call-to-action {
+    .greeting {
         padding: 0 var(--x-padding-small) 0;
     }
 
-    .call-to-action-title {
+    .greeting-title {
         font-size: 50px;
         line-height: 63px;
     }
 
-    .call-to-action-subtitle {
+    .greeting-subtitle {
         font-size: 18px;
         line-height: 27px;
+    }
+
+    .greeting .button-link {
+        width: 173px;
     }
 
     .popular-brands-container {
@@ -488,7 +501,6 @@ body {
 
     .shop-by-category-title, .most-popular-title {
         font-size: 35px;
-        margin-bottom: 25px;
     }
 
     .shop-info-container {
@@ -500,8 +512,12 @@ body {
         border-radius: 25px;
     }
 
-    .shop-card .button {
-        padding: 15px 20px;
+    .shop-card-body {
+        padding: 10px 15px;
+    }
+
+    .shop-card .button-link {
+        padding: 10px 20px;
     }
 
     .shop-card-image {
@@ -525,6 +541,18 @@ body {
 
     .most-popular-header {
         padding-right: 0;
+        margin-bottom: 25px;
+    }
+
+    .most-popular-slider-buttons {
+        height: auto;
+        align-items: center;
+    }
+
+    .left-arrow-button, .right-arrow-button {
+        width: 40px;
+        height: 40px;
+        padding: 5px;
     }
 
     .popular-card {
@@ -548,21 +576,21 @@ body {
         margin-bottom: 20px;
     }
 
-    .button {
-        font-size: 12px;
+    .button-link {
+        font-size: 14px;
     }
 
     .button-container {
         width: 100%;
     }
 
-    .button-container > .button {
+    .button-container > .button-link {
         width: 100%;
         padding: 15px 20px;
     }
 }
 
-@media (min-width: 576px) and (max-width: 767px) {
+@media (min-width: 576px) and (max-width: 992px) {
     .navigation {
         padding: 0 var(--x-padding-small);
     }
@@ -577,7 +605,7 @@ body {
         display: flex;
     }
 
-    .call-to-action {
+    .greeting {
         padding: 0 var(--x-padding-small) 0;
     }
 
@@ -641,7 +669,7 @@ body {
         margin-bottom: 20px;
     }
 
-    .button {
+    .button-link {
         padding: 15px 50px;
     }
 
@@ -649,26 +677,8 @@ body {
         width: 100%;
     }
 
-    .button-container > .button {
+    .button-container > .button-link {
         width: 100%;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 992px) {
-    .shop-info-container {
-        display: none;
-    }
-
-    .shop-cards {
-        grid-template-columns: repeat(1, 1fr);
-    }
-
-    .shop-card {
-        width: 100%;
-    }
-
-    .button {
-        padding: 15px 50px;
     }
 }
 
@@ -687,7 +697,7 @@ body {
     }
 }
 
-@media (min-width: 992px) and (max-width: 1200px) {
+@media (min-width: 992px) and (max-width: 1400px) {
     .popular-brands-container {
         height: auto;
     }

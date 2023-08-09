@@ -8,8 +8,8 @@
     <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
 </head>
 <body>
-<header id="header">
-    <nav class="navigation">
+<header>
+    <div class="navigation">
         <div class="start-navigation">
             <div class="burger-icon">
                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -18,10 +18,10 @@
                     <line x1="3.5" y1="17.5" x2="18.5" y2="17.5" stroke="#383838" stroke-linecap="round"/>
                 </svg>
             </div>
-            <p class="brandName">M<span class="brandNameSpan">EO</span>W</p>
+            <h1><a href="/" class="brandName">M<span class="brandNameSpan">EO</span>W</a></h1>
         </div>
 
-        <div class="menu-container">
+        <nav class="menu-container">
             <ul class="menu">
                 <li class="menu-item">
                     <p class="menu-item-text">DOGS</p>
@@ -39,7 +39,7 @@
                 <li class="menu-item">SALE</li>
                 <li class="menu-item">BLOG</li>
             </ul>
-        </div>
+        </nav>
 
         <div class="navigation-icons">
             <div class="user-icon">
@@ -55,7 +55,7 @@
                 </svg>
             </div>
         </div>
-    </nav>
+    </div>
 
     <div class="sidebar">
         <div class="menu-head">
@@ -65,8 +65,8 @@
                 </svg>
             </div>
         </div>
-        <div class="menu-container">
-            <p class="brandName">M<span class="brandNameSpan">EO</span>W</p>
+        <nav class="menu-container">
+            <a href="/" class="brandName">M<span class="brandNameSpan">EO</span>W</a>
             <ul class="menu">
                 <li class="menu-item">
                     <p class="menu-item-text">DOGS</p>
@@ -80,15 +80,13 @@
                         <path d="M1 3L5 7L9 3" stroke="#383838" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </li>
-                <li class="menu-item">GROOMING</li>
-                <li class="menu-item">SALE</li>
-                <li class="menu-item">BLOG</li>
+                <li class="menu-item"><a href="/grooming">GROOMING</a></li>
+                <li class="menu-item"><a href="/sale">SALE</a></li>
+                <li class="menu-item"><a href="/blog">BLOG</a></li>
             </ul>
-        </div>
+        </nav>
     </div>
-</header>
 
-<main id="main">
     <div class="shop-info-container">
         <div class="info">
             <p>100,000 HAPPY CUSTOMERS</p>
@@ -103,13 +101,17 @@
         <div class="info"><p>EARLY ACCESS BLACK FRIDAY STARTS NOW!</p></div>
         <div class="info"><p>ORIGINAL PRODUCTS</p></div>
     </div>
+</header>
 
-    <div class="call-to-action-container">
-        <div class="call-to-action">
-            <p class="call-to-action-title">Choose the best for the best</p>
-            <p class="call-to-action-subtitle">Lorem Ipsum is simply dummy text of the printing and typesetting
+<main>
+
+
+    <div class="greeting-container">
+        <div class="greeting">
+            <h3 class="greeting-title">Choose the best for the best</h3>
+            <p class="greeting-subtitle">Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry</p>
-            <button class="button">Shop Now</button>
+            <a href="/shop" class="button-link">Shop Now</a>
         </div>
     </div>
 
@@ -143,11 +145,9 @@
         </div>
         <div class="slider-indicators"></div>
     </div>
-</main>
 
-<footer id="footer">
     <div class="shop-by-category-container">
-        <p class="shop-by-category-title">Shop By Category</p>
+        <h3 class="shop-by-category-title">Shop By Category</h3>
         <div class="shop-cards">
             <div class="shop-card">
                 <img src="assets/shop-by-category/Dogs.png" alt="Dogs" class="shop-card-image"/>
@@ -157,7 +157,7 @@
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                     </p>
-                    <button class="button">Shop Now</button>
+                    <a href="/shop" class="button-link">Shop Now</a>
                 </div>
             </div>
             <div class="shop-card">
@@ -168,7 +168,7 @@
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                     </p>
-                    <button class="button">Shop Now</button>
+                    <a href="/shop" class="button-link">Shop Now</a>
                 </div>
             </div>
             <div class="shop-card">
@@ -179,7 +179,7 @@
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                     </p>
-                    <button class="button">Shop Now</button>
+                    <a href="/shop" class="button-link">Shop Now</a>
                 </div>
             </div>
             <div class="shop-card">
@@ -190,7 +190,7 @@
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                     </p>
-                    <button class="button">Shop Now</button>
+                    <a href="/shop" class="button-link">Shop Now</a>
                 </div>
             </div>
         </div>
@@ -198,16 +198,16 @@
 
     <div class="most-popular-container">
         <div class="most-popular-header">
-            <p class="most-popular-title">Most Popular</p>
+            <h3 class="most-popular-title">Most Popular</h3>
             <div class="most-popular-slider-buttons">
                 <button class="left-arrow-button">
-                    <svg width="31" height="16" viewBox="0 0 31 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="0 0 31 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0.292891 8.70711C-0.0976334 8.31658 -0.0976334 7.68342 0.292891 7.29289L6.65685 0.928932C7.04738 0.538408 7.68054 0.538408 8.07107 0.928932C8.46159 1.31946 8.46159 1.95262 8.07107 2.34315L2.41421 8L8.07107 13.6569C8.46159 14.0474 8.46159 14.6805 8.07107 15.0711C7.68054 15.4616 7.04738 15.4616 6.65685 15.0711L0.292891 8.70711ZM31 9H0.999998V7H31V9Z"
                               fill="#1EA8DD" fill-opacity="0.5"/>
                     </svg>
                 </button>
                 <button class="right-arrow-button">
-                    <svg width="31" height="16" viewBox="0 0 31 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="0 0 31 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M30.7071 8.70711C31.0976 8.31658 31.0976 7.68342 30.7071 7.29289L24.3431 0.928932C23.9526 0.538408 23.3195 0.538408 22.9289 0.928932C22.5384 1.31946 22.5384 1.95262 22.9289 2.34315L28.5858 8L22.9289 13.6569C22.5384 14.0474 22.5384 14.6805 22.9289 15.0711C23.3195 15.4616 23.9526 15.4616 24.3431 15.0711L30.7071 8.70711ZM0 9H30V7H0V9Z"
                               fill="#1EA8DD"/>
                     </svg>
@@ -225,7 +225,7 @@
                         </p>
                     </div>
                     <div class="button-container">
-                        <button class="button">Shop Now</button>
+                        <a href="/shop" class="button-link">Shop Now</a>
                     </div>
                 </div>
             </div>
@@ -239,7 +239,7 @@
                         </p>
                     </div>
                     <div class="button-container">
-                        <button class="button">Shop Now</button>
+                        <a href="/shop" class="button-link">Shop Now</a>
                     </div>
                 </div>
             </div>
@@ -253,13 +253,13 @@
                         </p>
                     </div>
                     <div class="button-container">
-                        <button class="button">Shop Now</button>
+                        <a href="/shop" class="button-link">Shop Now</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</footer>
+</main>
 
 <script src="script.js"></script>
 </body>
